@@ -15,33 +15,36 @@ class AudioSlider extends StatefulWidget {
 
 class _AudioSliderState extends State<AudioSlider> {
   AudioController audioController = AudioController();
-  double duration = 0;
-  double value = 0.0;
-  double maxValue = 0.0;
+  Duration? duration;
+  Duration? position;
 
   @override
   Widget build(BuildContext context) {
     audioController.audioPlayer.onPlayerStateChanged.listen((PlayerState s) {
       if (s == PlayerState.STOPPED) {
         setState(() {
-          value = 0.0;
+          position = const Duration(seconds: 0);
         });
       }
     });
 
     audioController.audioPlayer.onDurationChanged.listen((Duration d) {
-      duration = d.inSeconds.toDouble() / 100;
+      setState(() {
+        duration = d;
+      });
     });
     audioController.audioPlayer.onAudioPositionChanged.listen((Duration p) {
-      value = p.inSeconds.toDouble() / 100;
-      setState(() {});
+      setState(() {
+        position = p;
+      });
     });
 
     return Slider(
-      value: value,
+      value: position == null ? 0.0 : position!.inSeconds.toDouble(),
       min: 0.0,
-      max: duration,
-      onChanged: (v) {},
+      max: duration == null ? 0.0 : duration!.inSeconds.toDouble(),
+      onChanged: (v) =>
+          audioController.audioPlayer.seek(Duration(seconds: v.toInt())),
       activeColor: Colors.lightGreenAccent,
       inactiveColor: Colors.white,
     );
