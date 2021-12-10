@@ -61,9 +61,7 @@ class _AudioSliderState extends State<AudioSlider> {
             Container(
               margin: const EdgeInsets.only(left: 22),
               child: Text(
-                position != null
-                    ? "${positionText ?? ''} / ${durationText ?? ''}"
-                    : "00:00",
+                position != null ? "${positionText ?? ''}" : "00:00",
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15.0,
