@@ -18,7 +18,9 @@ class _PlayerControlState extends State<PlayerControl> {
   @override
   void initState() {
     audioController.audioPlayer.onPlayerStateChanged.listen((s) {
-      playerState = s;
+      setState(() {
+        playerState = s;
+      });
     });
     super.initState();
   }
