@@ -25,8 +25,6 @@ class _MusicPlayerState extends State<MusicPlayer> {
   late String filePath;
   bool isPicked = false;
 
-  AudioPlayer audioPlayer = AudioPlayer();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +64,13 @@ class _MusicPlayerState extends State<MusicPlayer> {
                       AudioController().playMusic();
                     });
                   } else {
-                    // TODO
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: const Text("Couldn't fetch file"),
+                        action:
+                            SnackBarAction(label: 'Action', onPressed: () {}),
+                      ),
+                    );
                   }
                 },
                 style: ButtonStyle(
