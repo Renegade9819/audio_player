@@ -66,9 +66,9 @@ class _MusicPlayerState extends State<MusicPlayer> {
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: const Text("Couldn't fetch file"),
+                        content: const Text("No file Fetched"),
                         action:
-                            SnackBarAction(label: 'Action', onPressed: () {}),
+                            SnackBarAction(label: 'Close', onPressed: () {}),
                       ),
                     );
                   }
