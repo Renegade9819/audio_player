@@ -4,7 +4,6 @@ import 'dart:typed_data';
 import 'package:audio_player/components/AudioSlider.dart';
 import 'package:audio_player/components/PlayerControl.dart';
 import 'package:audio_player/controllers/AudioController.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_media_metadata/flutter_media_metadata.dart';
